@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 //AppCompatActivity - base layout that support library with action button features
 public class MainActivity extends AppCompatActivity {
-    public int selectedDifficulty = 0;
+    int selectedDifficulty = 0;
 
     //bundle- to pass data from one activity to another
     @Override

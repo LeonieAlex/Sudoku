@@ -20,6 +20,10 @@ public class Board {
             {9,7,8,  3,1,2,  6,4,5}
     };
 
+    int[][] getBoard(){
+        return board;
+    }
+
     void shuffleRows(){
         int blockNumber;
         for(int i = 0; i < 9; i++){
@@ -123,8 +127,80 @@ public class Board {
         }
     }
 
-    int[][] getBoard(){
-        return board;
+    //remove some numbers in the array depending on level
+    void removeSome(){
+        MainActivity game = new MainActivity();
+        int difficulty = game.selectedDifficulty;
+
+        if(difficulty == 0){
+            for(int i = 0; i < 30; i++){
+                int x = random.nextInt(9);
+                int y = random.nextInt(9);
+                board[x][y] = Integer.parseInt(null);
+            }
+        } else if (difficulty == 1){
+            for(int i = 0; i < 45; i++){
+                int x = random.nextInt(9);
+                int y = random.nextInt(9);
+                board[x][y] = Integer.parseInt(null);
+            }
+        } else {
+            for(int i = 0; i < 55; i++){
+                int x = random.nextInt(9);
+                int y = random.nextInt(9);
+                board[x][y] = 0;
+            }
+        }
+    }
+
+    //Backtrack to get solution of the sudoku
+
+    //checks to see if we can assign the number to the column or row or 3x3 grid
+    boolean isSafe(int row, int col, int num){
+        for(int i = 0; i < 9; i++){
+            if(board[row][i] == num)
+                return false;
+        }
+
+        for(int i = 0; i < 9; i++){
+            if(board[i][col] == num)
+                return false;
+        }
+
+        int startRow = row - (row % 3);
+        int startCol = col - (col % 3);
+
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(board[startRow][startCol] == num)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    //main skeleton of the backtracking function
+    boolean solveSudoku(int row, int col){
+        if(row == 8 && col == 8)
+            return true;
+
+        if(col == 8){
+            col = 0;
+            row++;
+        }
+
+        if(board[row][col] != 0)
+            return solveSudoku(row, col+1);
+
+        for(int i = 1; i <= 9; i++){
+            if(isSafe(row, col, i)){
+                board[row][col] = i;
+                if(solveSudoku(row, col+1))
+                    return true;
+            }
+            board[row][col] = 0;
+        }
+        return false;
     }
 
 //    public static void main(String[] args) {
