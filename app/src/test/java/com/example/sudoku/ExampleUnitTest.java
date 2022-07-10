@@ -84,4 +84,22 @@ public class ExampleUnitTest {
         assertTrue(BoardTest.isValidSudoku(board.getBoard()));
     }
 
+    @Test
+    public void testEasy(){
+        Board board = new Board();
+        assertTrue(BoardTest.removeEasy(board.getBoard()));
+    }
+
+    @Test
+    public void testMedium(){
+        Board board = new Board();
+        assertTrue(BoardTest.removeMedium(board.getBoard()));
+    }
+
+    @Test
+    public void testHard(){
+        Board board = new Board();
+        assertTrue(BoardTest.removeHard(board.getBoard()));
+    }
+
 }

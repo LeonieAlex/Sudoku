@@ -136,19 +136,25 @@ public class Board {
             for(int i = 0; i < 30; i++){
                 int x = random.nextInt(9);
                 int y = random.nextInt(9);
-                board[x][y] = Integer.parseInt(null);
+                if(board[x][y] != 0){
+                    board[x][y] = 0;
+                }
             }
         } else if (difficulty == 1){
             for(int i = 0; i < 45; i++){
                 int x = random.nextInt(9);
                 int y = random.nextInt(9);
-                board[x][y] = Integer.parseInt(null);
+                if(board[x][y] != 0){
+                    board[x][y] = 0;
+                }
             }
         } else {
             for(int i = 0; i < 55; i++){
                 int x = random.nextInt(9);
                 int y = random.nextInt(9);
-                board[x][y] = 0;
+                if(board[x][y] != 0){
+                    board[x][y] = 0;
+                }
             }
         }
     }

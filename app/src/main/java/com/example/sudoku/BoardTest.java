@@ -1,6 +1,7 @@
 package com.example.sudoku;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class BoardTest {
     static boolean inRange(int[][] board){
@@ -61,5 +62,68 @@ public class BoardTest {
             }
         }
         return true;
+    }
+
+    static boolean removeEasy(int board[][]){
+        Random random = new Random();
+        for(int i = 0; i < 30; i++){
+            int x = random.nextInt(9);
+            int y = random.nextInt(9);
+            if(board[x][y] != 0){
+                board[x][y] = 0;
+            }
+        }
+
+        int count = 0;
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(board[i][j] == 0)
+                    count++;
+            }
+        }
+
+        return count != 30;
+    }
+
+    static boolean removeMedium(int board[][]){
+        Random random = new Random();
+        for(int i = 0; i < 45; i++){
+            int x = random.nextInt(9);
+            int y = random.nextInt(9);
+            if(board[x][y] != 0){
+                board[x][y] = 0;
+            }
+        }
+
+        int count = 0;
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(board[i][j] == 0)
+                    count++;
+            }
+        }
+
+        return count != 45;
+    }
+
+    static boolean removeHard(int board[][]){
+        Random random = new Random();
+        for(int i = 0; i < 55; i++){
+            int x = random.nextInt(9);
+            int y = random.nextInt(9);
+            if(board[x][y] != 0){
+                board[x][y] = 0;
+            }
+        }
+
+        int count = 0;
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(board[i][j] == 0)
+                    count++;
+            }
+        }
+
+        return count != 55;
     }
 }
