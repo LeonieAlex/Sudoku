@@ -11,6 +11,7 @@ I'm lowkey addicted to board games
 
 ### How was the Board Generated
 1. A plain valid board is used which looks like
+```
     1 2 3    4 5 6    7 8 9
     4 5 6    7 8 9    1 2 3
     7 8 9    1 2 3    4 5 6
@@ -22,5 +23,6 @@ I'm lowkey addicted to board games
     3 1 2    6 4 5    9 7 8
     6 4 5    9 7 8    3 1 2
     9 7 8    3 1 2    6 4 5
+```
 2. The board is then shuffled by rows, columns, by 3x3 rows and 3x3 columns. Board is also transposed and rotated
 3. When board goes through all of these processes, it will still be a valid sudoku board
